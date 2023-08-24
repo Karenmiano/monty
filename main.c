@@ -10,7 +10,9 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	char buf[1024], *line, *find;
 	unsigned int i, l_no = 0;
-	instruction_t arr[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
+	instruction_t arr[] = {
+		{"push", push}, {"pall", pall}, {"pint", pint},
+		{NULL, NULL}};
 	stack_t *top = NULL;
 
 	if (argc != 2)
@@ -97,4 +99,13 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+}
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L<%d>: can't pint, stack empty\n", line_number);
+		exit (EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
