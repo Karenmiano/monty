@@ -1,7 +1,12 @@
 #include "monty.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+/**
+ * pop - pops the top element from a stack
+ * stack: pointer to pointer to top element of stack
+ * line_number: line_number where the opcode is called
+ * Return: nothing
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
