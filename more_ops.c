@@ -54,6 +54,12 @@ void add(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	pop(stack, line_number);
 	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		printf("Stack overflow\n");
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	new->n = result;
 	new->prev = NULL;
 	new->next = *stack;
