@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
 	unsigned int i, l_no = 0;
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"pop", pop}, {"swap", swap}, {"add", add}, {NULL, NULL}};
+		{"pop", pop}, {"swap", swap}, {"add", add},
+		{"nop", nop}, {NULL, NULL}};
 	stack_t *top = NULL;
 
 	if (argc != 2)
