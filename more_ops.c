@@ -30,10 +30,33 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || ((*stack)->prev == NULL && (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
 	i = temp->n;
 	temp->n = temp->next->n;
 	temp->next->n = i;
+}
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp, *new;
+	int result;
+
+	if (*stack == NULL || ((*stack)->prev == NULL && (*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	temp = *stack;
+	result = (temp->n) + (temp->next->n);
+	pop(stack, line_number);
+	pop(stack, line_number);
+	new = malloc(sizeof(stack_t));
+	new->n = result;
+	new->prev = NULL;
+	new->next = *stack;
+	(*stack)->prev = new;
+	*stack = new;
 }
