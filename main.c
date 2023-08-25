@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	unsigned int i, l_no = 0;
 	instruction_t arr[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{NULL, NULL}};
+		{"pop", pop}, {NULL, NULL}};
 	stack_t *top = NULL;
 
 	if (argc != 2)
