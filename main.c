@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 			}
 			if (arr[i].opcode == NULL)
 			{
-				fprintf(stderr, "L<%u>: unknown instruction %s\n", l_no, opcodenarg);
+				fprintf(stderr, "L%u: unknown instruction %s\n", l_no, opcodenarg);
 				free_stack(top);
 				exit(EXIT_FAILURE);
 			}
@@ -63,14 +63,14 @@ void push(stack_t **stack, unsigned int line_number)
 	opcodenarg = strtok(NULL, " \t");
 	if (opcodenarg == NULL)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free(new);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else if (atoi(opcodenarg) == 0 && isdigit(opcodenarg[0]) == 0)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free(new);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
@@ -110,7 +110,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L<%d>: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit (EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
